@@ -11,7 +11,7 @@ pip install -r requirements.txt
 create database & tables
 
 # create venv
-python -m venv .venv
+python3 -m venv myvenv
 
 # Activate virtual environment on Linux
 source .venv/bin/activate
@@ -31,3 +31,11 @@ deactivate
 # Delete a venv with Pipenv
 pipenv --rm
 rm -r .venv
+
+#ec2 scripts
+sudo apt update -y
+sudo yum install python3-pip -y
+
+mkdir myapp & cd myapp
+python3 -m venv myvenv 
+yum install git -y
