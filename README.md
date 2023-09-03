@@ -7,8 +7,9 @@ Copied from the tutorial http://code.tutsplus.com/tutorials/creating-a-web-app-f
 
 https://github.com/uym2/MySQL-and-Python.git
 
-pip install -r requirements.txt
-create database & tables
+## pip install -r requirements.txt
+
+### create database & tables
 
 # create venv
 python -m venv .venv
