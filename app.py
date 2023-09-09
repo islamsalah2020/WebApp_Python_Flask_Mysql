@@ -7,12 +7,14 @@ app = Flask(__name__)
 
 # MySQL configurations
 app.config['MYSQL_DATABASE_USER'] = 'admin'
-app.config['MYSQL_DATABASE_PASSWORD'] = 'edit'
+app.config['MYSQL_DATABASE_PASSWORD'] = 'Passw0rd2023'   
 app.config['MYSQL_DATABASE_DB'] = 'BucketList'
 app.config['MYSQL_DATABASE_HOST'] = 'edit'
 mysql.init_app(app)
 
 app.secret_key = 'why would I tell you my secret key?'
+
+
 
 
 @app.route('/')
@@ -36,8 +38,6 @@ def validateLogin():
         _username = request.form['inputEmail']
         _password = request.form['inputPassword']
         con = mysql.connect()
-        cursor = con.cursor()
-
         cursor.callproc('sp_validateLogin', (_username,))
         data = cursor.fetchall()
         if len(data) > 0:
@@ -66,7 +66,6 @@ def signUp():
 
             conn = mysql.connect()
             cursor = conn.cursor()
-            
             _hashed_password = generate_password_hash(_password)
             cursor.callproc('sp_createUser', (_name, _email, _hashed_password))
             data = cursor.fetchall()
@@ -99,6 +98,9 @@ def logout():
     session.pop('user', None)
     return redirect('/')
 
-
 if __name__ == "__main__":
-    app.run()
+
+    app.run(host="0.0.0.0", port=3000)
+
+    
+    

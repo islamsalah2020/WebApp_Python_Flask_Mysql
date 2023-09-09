@@ -7,36 +7,43 @@ Copied from the tutorial http://code.tutsplus.com/tutorials/creating-a-web-app-f
 
 https://github.com/uym2/MySQL-and-Python.git
 
-#### pip install -r requirements.txt
+# Setup Steps:
 
-#### create database & tables
+## Create database & tables
+- connect to DB server
+- Run SQL Queries from sql_queries.txt file
 
-# create venv
-python3 -m venv myvenv
+## Setup BE server
+- connect to BE server
+- sudo apt update -y
+- sudo yum install python3-pip -y
+- yum install git -y
+- git clone https://github.com/islamsalah2020/WebApp_Python_Flask_Mysql.git
+- cd WebApp_Python_Flask_Mysql/
+- python3 -m venv myvenv 
+- source myvenv/bin/activate
+- pip install -r requirements.txt
+- edit DB Connections endpoint
+- Python3 app.py
 
-# Activate virtual environment on Linux
-source .venv/bin/activate
 
-# Activate virtual environment on windows
-# From command prompt
+
+## Delete a venv with Pipenv
+- pipenv --rm
+- rm -r .venv
+
+
+
+## ec2 scripts
+- sudo apt update -y
+- sudo yum install python3-pip -y
+- mkdir myapp & cd myapp
+
+
+## Activate virtual environment on windows
+## From command prompt
 dev-env\bin\activate.bat
-# From power shell
+## From power shell
 dev-env\Scripts\Activate.ps1
-
-# Deactivate virtual environment Linux
-source bin/deactivate
-
-# Deactivate virtual environment windows
+## Deactivate virtual environment windows
 deactivate
-
-# Delete a venv with Pipenv
-pipenv --rm
-rm -r .venv
-
-#ec2 scripts
-sudo apt update -y
-sudo yum install python3-pip -y
-
-mkdir myapp & cd myapp
-python3 -m venv myvenv 
-yum install git -y
