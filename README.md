@@ -41,9 +41,7 @@ https://github.com/uym2/MySQL-and-Python.git
 
 
 ## Activate virtual environment on windows
-## From command prompt
-dev-env\bin\activate.bat
-## From power shell
-dev-env\Scripts\Activate.ps1
+- dev-env\bin\activate.bat
+- dev-env\Scripts\Activate.ps1
 ## Deactivate virtual environment windows
-deactivate
+- deactivate
