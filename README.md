@@ -26,7 +26,7 @@ https://github.com/uym2/MySQL-and-Python.git
 - edit DB Connections endpoint
 - Python3 app.py
 
-
+bucketlist.crh5uvoy63mv.us-east-1.rds.amazonaws.com
 
 ## Delete a venv with Pipenv
 - pipenv --rm

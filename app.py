@@ -16,7 +16,6 @@ app.secret_key = 'why would I tell you my secret key?'
 
 
 
-
 @app.route('/')
 def main():
     return render_template('index.html')
@@ -37,10 +36,13 @@ def validateLogin():
     try:
         _username = request.form['inputEmail']
         _password = request.form['inputPassword']
+        
         conn = mysql.connect()
         cursor = conn.cursor()
+        
         cursor.callproc('sp_validateLogin', (_username,))
         data = cursor.fetchall()
+        
         if len(data) > 0:
             if check_password_hash(str(data[0][3]), _password):
                 session['user'] = data[0][0]
@@ -48,10 +50,12 @@ def validateLogin():
             else:
                 return render_template('error.html', error='Wrong Email address or Password')
         else:
-            return render_template('error.html', error='Wrong Email address or Password')
+            return render_template('error.html', error='Wrong entered data Email address or Password')
     except Exception as e:
         return render_template('error.html', error=str(e))
-
+    finally:
+        cursor.close()
+        conn.close()
 
 @app.route('/api/signup', methods=['POST'])
 def signUp():
