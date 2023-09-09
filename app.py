@@ -44,10 +44,11 @@ def validateLogin():
         data = cursor.fetchall()
         
         if len(data) > 0:
-            if check_password_hash(str(data[0][3]), _password):
+            if data[0][3] == _password:
                 session['user'] = data[0][0]
                 return redirect('/userHome')
             else:
+                print(str(data[0][3]))
                 return render_template('error.html', error='Wrong Email address or Password')
         else:
             return render_template('error.html', error='Wrong entered data Email address or Password')
@@ -71,8 +72,8 @@ def signUp():
 
             conn = mysql.connect()
             cursor = conn.cursor()
-            _hashed_password = generate_password_hash(_password)
-            cursor.callproc('sp_createUser', (_name, _email, _hashed_password))
+            # _hashed_password = generate_password_hash(_password)
+            cursor.callproc('sp_createUser', (_name, _email, _password))
             data = cursor.fetchall()
 
             if len(data) == 0:
