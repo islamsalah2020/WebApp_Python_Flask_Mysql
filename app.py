@@ -37,7 +37,8 @@ def validateLogin():
     try:
         _username = request.form['inputEmail']
         _password = request.form['inputPassword']
-        con = mysql.connect()
+        conn = mysql.connect()
+        cursor = conn.cursor()
         cursor.callproc('sp_validateLogin', (_username,))
         data = cursor.fetchall()
         if len(data) > 0:
